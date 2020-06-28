@@ -1,14 +1,16 @@
 pipeline {
-  agent {
-    dockerfile {
-      filename 'Dockerfile'
-    }
-
-  }
+  agent any
   stages {
     stage('build') {
+      agent {
+        dockerfile {
+          filename 'Dockerfile'
+        }
+
+      }
       steps {
-        sh 'docker build .'
+        echo 'Started building'
+        sh 'docker build -t muhsenmaqsudi/larakins .'
       }
     }
 

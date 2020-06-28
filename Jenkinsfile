@@ -12,7 +12,7 @@ pipeline {
       }
       steps {
         echo 'Started building'
-        sh 'docker build -t muhsenmaqsudi/larakins .'
+//         sh 'docker build -t muhsenmaqsudi/larakins .'
         sh 'ssh maqsudi@hsproject.ir'
       }
     }

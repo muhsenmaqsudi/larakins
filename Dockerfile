@@ -15,7 +15,7 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN composer dump-autoload --no-scripts --no-dev --optimize
 
-RUN  ./vendor/bin/phpunit
+RUN php artisan test
 
 #ARG puid
 #ARG pgid

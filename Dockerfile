@@ -16,15 +16,3 @@ COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
 RUN composer dump-autoload --no-scripts --optimize
 # --no-dev
-
-RUN php artisan test
-
-#ARG puid
-#ARG pgid
-#
-#RUN groupmod -o -g $pgid www-data && \
-#    usermod -o -u $puid -g www-data www-data
-
-#EXPOSE 9000
-
-#CMD ["php-fpm"]

@@ -1,14 +1,14 @@
 pipeline {
   agent {
-    docker {
-      image 'php'
+    dockerfile {
+      filename 'Dockerfile'
     }
 
   }
   stages {
     stage('build') {
       steps {
-        sh 'php --version'
+        sh 'docker build .'
       }
     }
 

@@ -5,13 +5,14 @@ pipeline {
 //   }
   stages {
     stage('build') {
-      agent {
-        dockerfile {
-          filename 'Dockerfile'
-        }
-      }
+//       agent {
+//         dockerfile {
+//           filename 'Dockerfile'
+//         }
+//       }
+      agent any
       steps {
-		// checkout scm
+		checkout scm
         echo 'Started building, updating jenkinsfile'
       }
     }

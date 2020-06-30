@@ -12,7 +12,6 @@ pipeline {
 //       }
       agent any
       steps {
-// 		checkout scm
         echo 'Started building'
         sh 'composer install'
         sh 'php artisan route:list'

@@ -2,7 +2,7 @@ pipeline {
   agent any
 //   triggers {
 //     pollSCM('H */4 * * 1-5')
-//   }	
+//   }
   stages {
     stage('build') {
       agent {
@@ -16,8 +16,10 @@ pipeline {
       }
     }
   }
+
   post {
     always {
+      sh 'php -v'
       echo 'I will always say Hello again!'
     }
     success {
@@ -36,7 +38,7 @@ pipeline {
 //             // Install dependencies, create a new .env file and generate a new key, just for testing
 //             sh 'docker run --rm --volume $(pwd):/app composer install --no-ansi'
 //             sh 'cp .env.example .env'
-//             sh 'docker run --rm --name key-generate-container -v $(pwd):/usr/src/app -w /usr/src/app php:7.2-cli php artisan key:generate'            
+//             sh 'docker run --rm --name key-generate-container -v $(pwd):/usr/src/app -w /usr/src/app php:7.2-cli php artisan key:generate'
 
 //             // Run any static asset building, if needed
 //             // sh "npm install && gulp --production"

@@ -12,7 +12,7 @@ pipeline {
       }
       steps {
 		// checkout scm
-        echo 'Started building'
+        echo 'Started building, updating jenkinsfile'
       }
     }
   }

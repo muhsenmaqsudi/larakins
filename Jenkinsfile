@@ -22,6 +22,8 @@ pipeline {
   post {
     always {
       sh 'php -v'
+      sh 'pwd'
+      sh 'ls'
       echo 'I will always say Hello again!'
     }
     success {

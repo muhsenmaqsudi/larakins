@@ -34,9 +34,9 @@ pipeline {
                         configName: 'barakat_test_server',
                         verbose: true,
                         transfers: [
-                            sshTransfer(sourceFiles: './larakins_master'),
+                            sshTransfer(sourceFiles: '**'),
                             sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-                            sshTransfer(execCommand: 'php artisan route:list')
+                            sshTransfer2(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
                         ]
                     )
                 ]

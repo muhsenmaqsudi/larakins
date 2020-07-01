@@ -25,24 +25,6 @@ pipeline {
               sh 'php artisan test'
             }
           }
-          stage('SSH transfer') {
-            steps([$class: 'BapSshPromotionPublisherPlugin']) {
-              sshPublisher(
-                continueOnError: false, failOnError: true,
-                publishers: [
-                    sshPublisherDesc(
-                        configName: 'barakat_test_server',
-                        verbose: true,
-                        transfers: [
-                            sshTransfer(sourceFiles: '**'),
-                            // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-                            // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
-                        ]
-                    )
-                ]
-            )
-            }
-          }
         }
       }
     }
@@ -52,11 +34,27 @@ pipeline {
       echo 'I will always say Hello again!'
     }
     success {
-      echo 'success'
-      sh 'php -v'
+      stage('SSH transfer') {
+        steps([$class: 'BapSshPromotionPublisherPlugin']) {
+          sshPublisher(
+            continueOnError: false, failOnError: true,
+            publishers: [
+                sshPublisherDesc(
+                    configName: 'barakat_test_server',
+                    verbose: true,
+                    transfers: [
+                        sshTransfer(sourceFiles: '**'),
+                    // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
+                    // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
+                    ]
+                )
+            ]
+          )
+        }
+      }            
       sh 'pwd'
       sh 'ls'
-      sh 'ssh maqsudi@hsproject.ir'
+      // sh 'ssh maqsudi@hsproject.ir'
     }
     failure {
       echo 'failed'

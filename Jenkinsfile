@@ -25,6 +25,24 @@ pipeline {
               sh 'php artisan test'
             }
           }
+          // stage('SSH transfer') {
+          //   steps([$class: 'BapSshPromotionPublisherPlugin']) {
+          //     sshPublisher(
+          //       continueOnError: false, failOnError: true,
+          //       publishers: [
+          //           sshPublisherDesc(
+          //               configName: 'barakat_test_server',
+          //               verbose: true,
+          //               transfers: [
+          //                   sshTransfer(sourceFiles: '**'),
+          //                   // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
+          //                   // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
+          //               ]
+          //           )
+          //       ]
+          //   )
+          //   }
+          // }
         }
       }
     }
@@ -33,28 +51,28 @@ pipeline {
     always {
       echo 'I will always say Hello again!'
     }
-    success {
-      stage('SSH transfer') {
-        steps([$class: 'BapSshPromotionPublisherPlugin']) {
-          sshPublisher(
-            continueOnError: false, failOnError: true,
-            publishers: [
-                sshPublisherDesc(
-                    configName: 'barakat_test_server',
-                    verbose: true,
-                    transfers: [
-                        sshTransfer(sourceFiles: '**'),
-                    // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-                    // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
-                    ]
-                )
-            ]
-          )
-        }
-      }            
+    success {                
+      step([$class: 'BapSshPromotionPublisherPlugin']) {
+        sshPublisher(
+          continueOnError: false, failOnError: true,
+          publishers: [
+              sshPublisherDesc(
+                  configName: 'barakat_test_server',
+                  verbose: true,
+                  transfers: [
+                      sshTransfer(sourceFiles: '**'),
+                      // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
+                      // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
+                  ]
+              )
+          ]
+      )
+      }        
+      echo 'success'
+      sh 'php -v'
       sh 'pwd'
       sh 'ls'
-      // sh 'ssh maqsudi@hsproject.ir'
+      sh 'ssh maqsudi@hsproject.ir'
     }
     failure {
       echo 'failed'

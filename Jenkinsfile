@@ -1,19 +1,29 @@
 pipeline {
-  agent any
+  agent none
   stages {
-    stage('Build') {
-      steps {
-        sh 'composer install'        
-      }
-    }
-    stage('Test') {
-      steps {
-          echo 'Testing..'
-      }
-    }
-    stage('Deploy') {
-      steps {
-          echo 'Deploying....'
+    stage('BuildAndTest') {
+      matrix {
+        agent {
+          label "${PLATFORM}-agent"
+        }
+        axes {
+          axis {
+            name 'PLATFORM'
+            values 'linux', 'windows', 'mac'
+          }
+        }
+        stages {
+          stage('Build') {
+            steps {
+              echo "Do Build for ${PLATFORM}"
+            }
+          }
+          stage('Test') {
+            steps {
+              echo "Do Test for ${PLATFORM}"
+            }
+          }
+        }
       }
     }
   }

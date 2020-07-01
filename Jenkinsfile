@@ -35,7 +35,7 @@ pipeline {
                         verbose: true,
                         transfers: [
                             sshTransfer(sourceFiles: '**'),
-                            sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
+                            // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
                             // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
                         ]
                     )

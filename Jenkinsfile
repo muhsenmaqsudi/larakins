@@ -15,6 +15,8 @@ pipeline {
             steps {
               echo "Do Build for ${PLATFORM}"
               sh "composer install"
+              sh "cp .env.example .env"
+              sh "php artisan key:generate"
             }
           }
           stage('Test') {

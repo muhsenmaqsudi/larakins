@@ -36,7 +36,7 @@ pipeline {
                         transfers: [
                             sshTransfer(sourceFiles: '**'),
                             sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-                            sshTransfer2(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
+                            // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
                         ]
                     )
                 ]

@@ -22,7 +22,7 @@ pipeline {
           stage('Test') {
             steps {
               echo "Do Test for ${PLATFORM}"
-              sh "./vendor/bin/phpunit"
+              sh "php artisan test"
             }
           }
         }

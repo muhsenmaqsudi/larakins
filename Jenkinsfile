@@ -3,24 +3,26 @@ pipeline {
   stages {
     stage('BuildAndTest') {
       matrix {
-        agent {
-          label "${PLATFORM}-agent"
-        }
+        agent any
         axes {
           axis {
             name 'PLATFORM'
-            values 'linux', 'windows'
+            values 'linux', 'windows', 'mac'
+          }
+          axis {
+            name 'BROWSER'
+            values 'firefox', 'chrome', 'safari', 'edge'
           }
         }
         stages {
           stage('Build') {
             steps {
-              echo "Do Build for ${PLATFORM}"
+              echo "Do Build for ${PLATFORM} - ${BROWSER}"
             }
           }
           stage('Test') {
             steps {
-              echo "Do Test for ${PLATFORM}"
+              echo "Do Test for ${PLATFORM} - ${BROWSER}"
             }
           }
         }

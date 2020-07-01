@@ -14,14 +14,13 @@ pipeline {
           stage('Build') {
             steps {
               echo "Do Build for ${PLATFORM}"
-              sh 'php -v'
-              sh 'pwd'
-              sh 'ls'
+              sh "composer install"
             }
           }
           stage('Test') {
             steps {
               echo "Do Test for ${PLATFORM}"
+              sh "./vendor/bin/phpunit"
             }
           }
         }
@@ -34,6 +33,9 @@ pipeline {
     }
     success {
       echo 'success'
+      sh 'php -v'
+      sh 'pwd'
+      sh 'ls'
       sh 'ssh maqsudi@hsproject.ir'
     }
     failure {

@@ -31,7 +31,7 @@ pipeline {
                 continueOnError: false, failOnError: true,
                 publishers: [
                     sshPublisherDesc(
-                        configName: 'hsproject_master',
+                        configName: 'barakat_test_server',
                         verbose: true,
                         transfers: [
                             sshTransfer(execCommand: 'ls'),

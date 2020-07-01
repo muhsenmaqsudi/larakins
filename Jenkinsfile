@@ -14,6 +14,9 @@ pipeline {
           stage('Build') {
             steps {
               echo "Do Build for ${PLATFORM}"
+              sh 'php -v'
+              sh 'pwd'
+              sh 'ls'
             }
           }
           stage('Test') {
@@ -27,9 +30,6 @@ pipeline {
   }
   post {
     always {
-      sh 'php -v'
-      sh 'pwd'
-      sh 'ls'
       echo 'I will always say Hello again!'
     }
     success {

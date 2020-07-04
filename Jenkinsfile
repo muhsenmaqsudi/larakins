@@ -13,7 +13,7 @@ pipeline {
         stages {
           stage('Build') {
             steps {
-              slackSend color: '#BADA55', message: 'Build Started', channel: 'jenkins'
+              slackSend color: '#2962ff', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", channel: 'jenkins'
               echo "Do Build for ${PLATFORM}"
               sh 'composer install'
               sh 'cp .env.example .env'
@@ -53,14 +53,13 @@ pipeline {
       echo 'I will always say Hello again!'
     }
     success {
-      slackSend color: '#BADA55', message: 'Successful Build', channel: 'jenkins'
+      slackSend color: '#76ff03', message: 'Larakins Successfully Deployed', channel: '#jenkins'
       sh 'php -v'
       sh 'pwd'
       sh 'ls'
-      sh 'ssh maqsudi@hsproject.ir'
     }
     failure {
-      echo 'failed'
+      slackSend color: '#ff1744', message: 'Larakins Deployment Failed', channel: '#jenkins'
     }
   }
 }

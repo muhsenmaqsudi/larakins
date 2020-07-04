@@ -29,25 +29,26 @@ pipeline {
       }
     }
     stage('Deploy') {
-//       steps([$class: 'BapSshPromotionPublisherPlugin']) {
-    steps {
-           sshPublisher(
-             continueOnError: false, failOnError: true,
-             publishers: [
-              sshPublisherDesc(
-              configName: "barakat_test_server",
-    //            configName: "${env.SSH_CONFIG_NAME}",
-               verbose: true,
-               transfers: [
-                sshTransfer(
-                 sourceFiles: "**",
-    //              removePrefix: "${path_to_file}",
-                 remoteDirectory: "./home/maqsudi/workspace/larakins/",
-                 execCommand: "composer install"
-                )
-               ])
-             ])
-    }
+      steps {
+        sshPublisher(
+          continueOnError: false, failOnError: true,
+          publishers: [
+          sshPublisherDesc(
+          configName: 'barakat_test_server',
+            //                verbose: true,
+            transfers: [
+              sshTransfer(
+                execCommand: 'Run commands before copy?'
+                ),
+            sshTransfer(
+              sourceFiles: '**',
+              //              removePrefix: "${path_to_file}",
+              remoteDirectory: './home/maqsudi/workspace/larakins/',
+              execCommand: 'composer install'
+            )
+            ])
+          ])
+      }
     }
   }
   post {

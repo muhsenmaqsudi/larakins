@@ -38,19 +38,10 @@ pipeline {
             // verbose: true,
             transfers: [
               sshTransfer(
-                execCommand: 'ls',
-              ),
-              sshTransfer(
-                execCommand: 'cd workspace/larakins',
-              ),
-              sshTransfer(
-                execCommand: 'ls',
-              ),
-              sshTransfer(
                 sourceFiles: '**',
                 // remoteDirectory: '/home/maqsudi/workspace/larakins/',
-                execCommand: 'ls'
-              )
+                execCommand: 'php ./home/maqsudi/workspace/larakins/artisan '
+              ),
             ])
           ])
       }

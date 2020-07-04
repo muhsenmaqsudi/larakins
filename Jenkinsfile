@@ -38,7 +38,10 @@ pipeline {
             // verbose: true,
             transfers: [
               sshTransfer(
-                execCommand: 'cd larakins',
+                execCommand: 'ls',
+              ),
+              sshTransfer(
+                execCommand: 'cd workspace/larakins',
               ),
               sshTransfer(
                 execCommand: 'ls',

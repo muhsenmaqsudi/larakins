@@ -40,7 +40,10 @@ pipeline {
               sshTransfer(
                 sourceFiles: '**',
                 // remoteDirectory: '/home/maqsudi/workspace/larakins/',
-                execCommand: 'php ./home/maqsudi/workspace/larakins/artisan '
+                execCommand: 'composer install -d /home/maqsudi/workspace/larakins'
+              ),
+              sshTransfer(
+                execCommand: 'php /home/maqsudi/workspace/larakins/artisan make:model Jenkins'
               ),
             ])
           ])

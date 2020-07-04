@@ -13,8 +13,7 @@ pipeline {
         stages {
           stage('Build') {
             steps {
-              slackSend color: '#2962ff', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) CI/CD Process", channel: '#jenkins'
-              echo "Do Build for ${PLATFORM}"
+              slackSend color: '#2962ff', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) CI/CD Build Stage for ${PLATFORM}", channel: '#jenkins'
               sh 'composer install'
               sh 'cp .env.example .env'
               sh 'php artisan key:generate'
@@ -22,7 +21,7 @@ pipeline {
           }
           stage('Test') {
             steps {
-              echo "Do Test for ${PLATFORM}"
+              slackSend color: '#ffff00', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) CI/CD Test Stage for ${PLATFORM}", channel: '#jenkins'
               sh 'php artisan test'
             }
           }

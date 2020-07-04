@@ -43,7 +43,7 @@ pipeline {
                  sourceFiles: "**",
     //              removePrefix: "${path_to_file}",
     //              remoteDirectory: "${remote_dir_path}",
-                 execCommand: "php artisan make:model Jenkins"
+                 execCommand: "ls"
                 )
                ])
              ])

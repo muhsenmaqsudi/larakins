@@ -30,22 +30,25 @@ pipeline {
     }
     stage('Deploy') {
 //       steps([$class: 'BapSshPromotionPublisherPlugin']) {
-       sshPublisher(
-         continueOnError: false, failOnError: true,
-         publishers: [
-          sshPublisherDesc(
-          configName: "barakat_test_server",
-//            configName: "${env.SSH_CONFIG_NAME}",
-           verbose: true,
-           transfers: [
-            sshTransfer(
-             sourceFiles: "**",
-//              removePrefix: "${path_to_file}",
-//              remoteDirectory: "${remote_dir_path}",
-             execCommand: "run commands after copy?"
-            )
-           ])
-         ])
+    steps {
+           sshPublisher(
+             continueOnError: false, failOnError: true,
+             publishers: [
+              sshPublisherDesc(
+              configName: "barakat_test_server",
+    //            configName: "${env.SSH_CONFIG_NAME}",
+               verbose: true,
+               transfers: [
+                sshTransfer(
+                 sourceFiles: "**",
+    //              removePrefix: "${path_to_file}",
+    //              remoteDirectory: "${remote_dir_path}",
+                 execCommand: "run commands after copy?"
+                )
+               ])
+             ])
+    }
+
 //         sshPublisher(
 //           continueOnError: false, failOnError: true,
 //           publishers: [

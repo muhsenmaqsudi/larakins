@@ -38,12 +38,13 @@ pipeline {
             // verbose: true,
             transfers: [
               sshTransfer(
+                execCommand: 'cd larakins',
                 execCommand: 'ls'
               ),
               sshTransfer(
                 sourceFiles: '**',
-                remoteDirectory: './home/maqsudi/workspace/larakins/',
-                execCommand: 'composer install'
+                // remoteDirectory: '/home/maqsudi/workspace/larakins/',
+                execCommand: 'ls'
               )
             ])
           ])

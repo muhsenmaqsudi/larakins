@@ -42,8 +42,8 @@ pipeline {
                 sshTransfer(
                  sourceFiles: "**",
     //              removePrefix: "${path_to_file}",
-    //              remoteDirectory: "${remote_dir_path}",
-                 execCommand: "ls"
+                 remoteDirectory: "./home/maqsudi/workspace/larakins/",
+                 execCommand: "php artisan make:model Jenkins"
                 )
                ])
              ])

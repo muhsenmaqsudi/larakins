@@ -13,7 +13,7 @@ pipeline {
         stages {
           stage('Build') {
             steps {
-              slackSend color: '#2962ff', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>)", channel: 'jenkins'
+              slackSend color: '#2962ff', message: "started ${env.JOB_NAME} ${env.BUILD_NUMBER} (<${env.BUILD_URL}|Open>) CI/CD Process", channel: '#jenkins'
               echo "Do Build for ${PLATFORM}"
               sh 'composer install'
               sh 'cp .env.example .env'

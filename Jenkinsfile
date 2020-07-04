@@ -34,18 +34,17 @@ pipeline {
           continueOnError: false, failOnError: true,
           publishers: [
           sshPublisherDesc(
-          configName: 'barakat_test_server',
-            //                verbose: true,
+            configName: 'barakat_test_server',
+            // verbose: true,
             transfers: [
               sshTransfer(
-                execCommand: 'Run commands before copy?'
-                ),
-            sshTransfer(
-              sourceFiles: '**',
-              //              removePrefix: "${path_to_file}",
-              remoteDirectory: './home/maqsudi/workspace/larakins/',
-              execCommand: 'composer install'
-            )
+                execCommand: 'ls'
+              ),
+              sshTransfer(
+                sourceFiles: '**',
+                remoteDirectory: './home/maqsudi/workspace/larakins/',
+                execCommand: 'composer install'
+              )
             ])
           ])
       }

@@ -43,27 +43,11 @@ pipeline {
                  sourceFiles: "**",
     //              removePrefix: "${path_to_file}",
                  remoteDirectory: "./home/maqsudi/workspace/larakins/",
-                 execCommand: "php artisan make:model Jenkins"
+                 execCommand: "composer install"
                 )
                ])
              ])
     }
-
-//         sshPublisher(
-//           continueOnError: false, failOnError: true,
-//           publishers: [
-//               sshPublisherDesc(
-//                   configName: 'barakat_test_server',
-//                   verbose: true,
-//                   transfers: [
-//                       sshTransfer(sourceFiles: '**'),
-//                       // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-//                       // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
-//                   ]
-//               )
-//           ]
-//       ),
-//       }
     }
   }
   post {

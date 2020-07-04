@@ -29,36 +29,38 @@ pipeline {
       }
     }
     stage('Deploy') {
-      steps([$class: 'BapSshPromotionPublisherPlugin']) {
-        sshPublisher(
-          continueOnError: false, failOnError: true,
-          publishers: [
-              sshPublisherDesc(
-                  configName: 'barakat_test_server',
-                  verbose: true,
-                  transfers: [
-                      sshTransfer(sourceFiles: '**'),
-                      // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-                      // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
-                  ]
-              )
-          ]
-      ),
-      sshPublisher(
-        continueOnError: false, failOnError: true,
-        publishers: [
-            sshPublisherDesc(
-                configName: 'barakat_test_server',
-                verbose: true,
-                transfers: [
-//                     sshTransfer(sourceFiles: '**'),
-                    // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
-                    sshTransfer(execCommand: 'ls')
-                ]
+//       steps([$class: 'BapSshPromotionPublisherPlugin']) {
+       sshPublisher(
+         continueOnError: false, failOnError: true,
+         publishers: [
+          sshPublisherDesc(
+          configName: "barakat_test_server",
+//            configName: "${env.SSH_CONFIG_NAME}",
+           verbose: true,
+           transfers: [
+            sshTransfer(
+             sourceFiles: "**",
+//              removePrefix: "${path_to_file}",
+//              remoteDirectory: "${remote_dir_path}",
+             execCommand: "run commands after copy?"
             )
-        ]
-    )
-      }
+           ])
+         ])
+//         sshPublisher(
+//           continueOnError: false, failOnError: true,
+//           publishers: [
+//               sshPublisherDesc(
+//                   configName: 'barakat_test_server',
+//                   verbose: true,
+//                   transfers: [
+//                       sshTransfer(sourceFiles: '**'),
+//                       // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
+//                       // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
+//                   ]
+//               )
+//           ]
+//       ),
+//       }
     }
   }
   post {

@@ -13,6 +13,7 @@ pipeline {
         stages {
           stage('Build') {
             steps {
+              slackSend color: '#BADA55', message: 'Build Started', channel: jenkins
               echo "Do Build for ${PLATFORM}"
               sh 'composer install'
               sh 'cp .env.example .env'
@@ -51,8 +52,8 @@ pipeline {
     always {
       echo 'I will always say Hello again!'
     }
-    success { 
-      echo 'success'
+    success {
+      slackSend color: '#BADA55', message: 'Successful Build', channel: jenkins
       sh 'php -v'
       sh 'pwd'
       sh 'ls'

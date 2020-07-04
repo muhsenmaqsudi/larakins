@@ -41,8 +41,13 @@ pipeline {
                       // sshTransfer(remoteDirectory: '/home/maqsudi/workspace/testing_jenkins'),
                       // sshTransfer(execCommand: '/home/maqsudi/workspace/testing_jenkins php artisan route:list')
                   ]
-              ),
-            sshPublisherDesc2(
+              )
+          ]
+      ),
+      sshPublisher(
+        continueOnError: false, failOnError: true,
+        publishers: [
+            sshPublisherDesc(
                 configName: 'barakat_test_server',
                 verbose: true,
                 transfers: [
@@ -51,8 +56,8 @@ pipeline {
                     sshTransfer(execCommand: 'ls')
                 ]
             )
-          ]
-      )
+        ]
+    )
       }
     }
   }

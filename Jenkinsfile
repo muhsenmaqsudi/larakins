@@ -39,7 +39,9 @@ pipeline {
             transfers: [
               sshTransfer(
                 execCommand: 'cd larakins',
-                execCommand: 'ls'
+              ),
+              sshTransfer(
+                execCommand: 'ls',
               ),
               sshTransfer(
                 sourceFiles: '**',

@@ -39,10 +39,20 @@ pipeline {
             transfers: [
               sshTransfer(
                 sourceFiles: '**',
-                execCommand: 'composer install -d /home/maqsudi/workspace/larakins'
+                execCommand: 'sudo chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache/ && ls'
+//                 execCommand: 'sudo chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache/ && sudo chmod -R 775 /home/maqsudi/workspace/larakins/storage'
               ),
               sshTransfer(
-                execCommand: 'php /home/maqsudi/workspace/larakins/artisan make:model Jenkins'
+                execCommand: 'composer install --optimize-autoloader --no-dev -d /home/maqsudi/workspace/larakins'
+              ),
+              sshTransfer(
+                execCommand: 'php /home/maqsudi/workspace/larakins/artisan config:cache'
+              ),
+              sshTransfer(
+                execCommand: 'php /home/maqsudi/workspace/larakins/artisan route:cache'
+              ),
+              sshTransfer(
+                execCommand: 'php /home/maqsudi/workspace/larakins/artisan view:cache'
               ),
             ])
           ])

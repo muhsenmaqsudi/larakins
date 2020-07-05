@@ -36,7 +36,7 @@ pipeline {
           sshPublisherDesc(
             configName: 'barakat_test_server',
             verbose: true,
-            useWorkspaceInPromotion: true,
+//             useWorkspaceInPromotion: true,
             transfers: [
               sshTransfer(
                 sourceFiles: '**'

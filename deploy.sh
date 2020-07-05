@@ -6,8 +6,8 @@ else
     php artisan key:generate
 fi
 
-#chmod -R 775 storage bootstrap/cache
-#chown -R $USER:www-data storage bootstrap/cache
+chmod -R 775 storage bootstrap/cache
+chown -R $USER:www-data storage bootstrap/cache
 composer install --optimize-autoloader --no-dev
 php artisan config:cache
 php artisan route:cache

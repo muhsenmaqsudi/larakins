@@ -1,7 +1,7 @@
 pipeline {
   agent any
   environment {
-      REMOTE_DIR = "/home/maqsudi/workspace/larakins"
+    REMOTE_DIR = "/home/maqsudi/workspace/larakins"
   }
   stages {
     stage("BuildAndTest") {
@@ -20,7 +20,6 @@ pipeline {
               sh "composer install"
               sh "cp .env.example .env"
               sh "php artisan key:generate"
-              sh "printenv"
             }
           }
           stage("Test") {

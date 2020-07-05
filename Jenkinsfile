@@ -38,7 +38,9 @@ pipeline {
             verbose: true,
             transfers: [
               sshTransfer(
-                sourceFiles: '*/',
+                sourceFiles: '*/'
+              ),
+              sshTransfer(
                 execCommand: 'sh /home/maqsudi/workspace/larakins/deploy.sh'
               )
             ])

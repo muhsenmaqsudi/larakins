@@ -40,7 +40,13 @@ pipeline {
               sshTransfer(
                 sourceFiles: '**',
                 execCommand: 'chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache'
-//                 execCommand: 'sudo chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache/ && sudo chmod -R 775 /home/maqsudi/workspace/larakins/storage'
+              ),
+              sshTransfer(
+                sourceFiles: '*/',
+                execCommand: 'chmod -R 775 /home/maqsudi/workspace/larakins/storage'
+              ),
+              sshTransfer(
+                execCommand: 'composer install --optimize-autoloader --no-dev -d /home/maqsudi/workspace/larakins'
               ),
               sshTransfer(
                 execCommand: 'composer install --optimize-autoloader --no-dev -d /home/maqsudi/workspace/larakins'

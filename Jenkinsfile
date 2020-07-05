@@ -31,18 +31,19 @@ pipeline {
     stage('Deploy') {
       steps {
         sshPublisher(
-          continueOnError: false, failOnError: true,
+          continueOnError: false, failOnError: true
           publishers: [
           sshPublisherDesc(
             configName: 'barakat_test_server',
             verbose: true,
+            useWorkspaceInPromotion: true,
             transfers: [
               sshTransfer(
-                sourceFiles: '*/'
+                sourceFiles: '**'
               ),
-              sshTransfer(
-                execCommand: 'sh /home/maqsudi/workspace/larakins/deploy.sh'
-              )
+//               sshTransfer(
+//                 execCommand: 'sh /home/maqsudi/workspace/larakins/deploy.sh'
+//               )
             ])
           ])
       }

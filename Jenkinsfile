@@ -31,7 +31,7 @@ pipeline {
     stage('Deploy') {
       steps {
         sshPublisher(
-          continueOnError: false, failOnError: true, alwaysPublishFromMaster: true
+          continueOnError: false, failOnError: true, alwaysPublishFromMaster: true,
           publishers: [
           sshPublisherDesc(
             configName: 'barakat_test_server',

@@ -46,14 +46,8 @@ pipeline {
     }
   }
   post {
-    always {
-      echo 'I will always say Hello again!'
-    }
     success {
       slackSend color: '#76ff03', message: 'Larakins Successfully Deployed', channel: '#jenkins'
-      sh 'php -v'
-      sh 'pwd'
-      sh 'ls'
     }
     failure {
       slackSend color: '#ff1744', message: 'Larakins Deployment Failed', channel: '#jenkins'

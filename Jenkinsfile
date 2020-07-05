@@ -38,12 +38,8 @@ pipeline {
             verbose: true,
             useWorkspaceInPromotion: true,
             transfers: [
-              sshTransfer(
-                sourceFiles: '*/'
-              ),
-              sshTransfer(
-                execCommand: 'sh /home/maqsudi/workspace/larakins/deploy.sh'
-              )
+              sshTransfer(sourceFiles: '*/'),
+              sshTransfer(execCommand: "cd /home/maqsudi/workspace/larakins;sh deploy.sh")
             ])
           ])
       }

@@ -38,11 +38,10 @@ pipeline {
             // verbose: true,
             transfers: [
               sshTransfer(
-                sourceFiles: '**',
+                sourceFiles: '*/',
                 execCommand: 'chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache'
               ),
               sshTransfer(
-                sourceFiles: '*/',
                 execCommand: 'chmod -R 775 /home/maqsudi/workspace/larakins/storage'
               ),
               sshTransfer(

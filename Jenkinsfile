@@ -39,7 +39,6 @@ pipeline {
             transfers: [
               sshTransfer(
                 sourceFiles: '**',
-                // remoteDirectory: '/home/maqsudi/workspace/larakins/',
                 execCommand: 'composer install -d /home/maqsudi/workspace/larakins'
               ),
               sshTransfer(

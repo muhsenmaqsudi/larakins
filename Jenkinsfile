@@ -37,7 +37,6 @@ pipeline {
             configName: 'barakat_test_server',
             verbose: true,
             useWorkspaceInPromotion: true,
-            usePty: true,
             transfers: [
               sshTransfer(sourceFiles: '**'),
               sshTransfer(execCommand: "cd /home/maqsudi/workspace/larakins;sh deploy.sh")

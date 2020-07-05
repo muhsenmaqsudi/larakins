@@ -39,6 +39,8 @@ pipeline {
             transfers: [
               sshTransfer(
                 sourceFiles: './workspace/larakins_master@2',
+              ),
+              sshTransfer(
                 execCommand: 'sh deploy.sh'
               ),
             ])

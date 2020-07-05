@@ -35,29 +35,11 @@ pipeline {
           publishers: [
           sshPublisherDesc(
             configName: 'barakat_test_server',
-            // verbose: true,
+            verbose: true,
             transfers: [
               sshTransfer(
                 sourceFiles: './workspace/larakins_master@2',
-                execCommand: 'chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache'
-              ),
-              sshTransfer(
-                execCommand: 'chmod -R 775 /home/maqsudi/workspace/larakins/storage'
-              ),
-              sshTransfer(
-                execCommand: 'composer install --optimize-autoloader --no-dev -d /home/maqsudi/workspace/larakins'
-              ),
-              sshTransfer(
-                execCommand: 'composer install --optimize-autoloader --no-dev -d /home/maqsudi/workspace/larakins'
-              ),
-              sshTransfer(
-                execCommand: 'php /home/maqsudi/workspace/larakins/artisan config:cache'
-              ),
-              sshTransfer(
-                execCommand: 'php /home/maqsudi/workspace/larakins/artisan route:cache'
-              ),
-              sshTransfer(
-                execCommand: 'php /home/maqsudi/workspace/larakins/artisan view:cache'
+                execCommand: 'sh deploy.sh'
               ),
             ])
           ])

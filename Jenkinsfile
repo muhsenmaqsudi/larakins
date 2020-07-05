@@ -39,7 +39,7 @@ pipeline {
             transfers: [
               sshTransfer(
                 sourceFiles: '**',
-                execCommand: 'sudo chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache/ && ls'
+                execCommand: 'sudo chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache/'
 //                 execCommand: 'sudo chmod -R 775 /home/maqsudi/workspace/larakins/bootstrap/cache/ && sudo chmod -R 775 /home/maqsudi/workspace/larakins/storage'
               ),
               sshTransfer(

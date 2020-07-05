@@ -4,7 +4,7 @@ cp .env.example .env
 #sudo chown -R $USER:www-data ./storage
 #sudo chown -R $USER:www-data ./bootstrap/cache
 composer install --optimize-autoloader --no-dev
-php artisan key:generateg
+php artisan key:generate
 php artisan config:cache
 php artisan route:cache
 php artisan view:cache

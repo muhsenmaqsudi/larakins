@@ -81,7 +81,7 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Laravel Testing CI/CD 3
+                    Laravel Testing CI/CD 4
                 </div>
 
                 <div class="links">
